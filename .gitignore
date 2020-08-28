@@ -3,3 +3,6 @@
 
 /src/front/node_modules
 /src/front/node_modules/*
+
+/target/
+/target/*
