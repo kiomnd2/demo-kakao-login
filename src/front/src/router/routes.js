@@ -9,6 +9,6 @@ export default [
   },
   {
     path: '/main',
-    component: Main
+    component: Main,
   }
 ]
