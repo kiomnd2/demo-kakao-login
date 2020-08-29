@@ -11,6 +11,9 @@ const KakaoAPI = class {
     return this.client.post('/api/init')
       .then(({ data }) => data.initKey || {});
   }
+
+
+
 };
 
 

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <span v-if="loading">로딩중 ... </span>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -19,18 +20,21 @@ export default {
       try{
         this.loading = true;
         const initkey = await KakaoApi.kakaoInit();
-
         window.Kakao.init(initkey);
 
-        window.Kakao.Auth.login({
-          success: (dat) => {
-            this.$store.dispatch('saveToken', dat);
-            console.log(this.$store.state);
-          },
-          fail: (e) => {
-            alert(e);
-          }
-        });
+        if(window.Kakao.isInitialized())
+          console.log("로그인합니다.");
+
+          window.Kakao.Auth.login({
+            success: (dat) => {
+              this.$store.dispatch('saveToken', dat);
+              this.$router.push("/main");
+            },
+            fail: (e) => {
+              alert(e);
+            }
+          });
+
       } catch(e) {
         console.log(e)
       } finally {
@@ -40,6 +44,8 @@ export default {
   },
   created() {
     this.init();
+
+
   }
 }
 </script>
