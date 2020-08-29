@@ -23,10 +23,11 @@ export default {
         window.Kakao.init(initkey);
 
         window.Kakao.Auth.login({
-          success: function(dat) {
-            console.log(dat);
+          success: (dat) => {
+            this.$store.dispatch('saveToken', dat);
+            console.log(this.$store.state);
           },
-          fail: function(e) {
+          fail: (e) => {
             alert(e);
           }
         });

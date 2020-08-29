@@ -1,12 +1,12 @@
 import * as types from './mutation-types';
 
 
-
 // dispatch
 export const saveToken = ({commit}, info) => {
 
-  localStorage.setItem("accessToken", info.accessToken);
-  localStorage.setItem("refreshToken", info.refreshToken);
+  console.log("saved Token", info);
+  localStorage.setItem("accessToken", info.access_token);
+  localStorage.setItem("refreshToken", info.refresh_token);
 
-  commit([types.SAVE_TOKEN], info);
+  commit(types.SAVE_TOKEN, info);
 };

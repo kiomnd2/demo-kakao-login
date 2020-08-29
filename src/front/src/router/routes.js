@@ -1,4 +1,3 @@
-import Login from "../view/Login";
 import Main from "../view/Main";
 import App from "../App";
 
