@@ -22,7 +22,7 @@ router.beforeEach((to, from, next) => {
       router.push("/"); // 로그인으로 돌아가라
     }
   }
-  next();
+  // next();
 });
 
 export default router;

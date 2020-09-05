@@ -23,17 +23,24 @@ export default {
         window.Kakao.init(initkey);
 
         if(window.Kakao.isInitialized())
+        {
           console.log("로그인합니다.");
-
-          window.Kakao.Auth.login({
-            success: (dat) => {
-              this.$store.dispatch('saveToken', dat);
-              this.$router.push("/main");
-            },
-            fail: (e) => {
-              alert(e);
-            }
-          });
+          if(this.$store.state.accessToken == null ) {
+            window.Kakao.Auth.login({
+              success: (dat) => {
+                this.$store.dispatch('saveToken', dat);
+                this.$router.push("/main");
+              },
+              fail: (e) => {
+                console.log(e);
+              }
+            });
+          }
+          else {
+            console.log("이동합니다.");
+            this.$router.push("/main");
+          }
+        }
 
       } catch(e) {
         console.log(e)
@@ -44,8 +51,6 @@ export default {
   },
   created() {
     this.init();
-
-
   }
 }
 </script>

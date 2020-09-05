@@ -12,8 +12,6 @@ const KakaoAPI = class {
       .then(({ data }) => data.initKey || {});
   }
 
-
-
 };
 
 
