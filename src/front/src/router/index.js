@@ -13,14 +13,19 @@ router.beforeEach((to, from, next) => {
   // 만약 이동하는 페이지가 처음 로그인 페이지가 아닐 때
   if(to.path !== '/') {
     // 인증해야됀다..
-    console.log(window.Kakao.isInitialized());
-    console.log(store.state);
-    if( window.Kakao.isInitialized() && store.state.accessToken != null) {
+      if( window.Kakao.isInitialized() && store.state.accessToken != null) {
       next();
     }
     else {
-      router.push("/"); // 로그인으로 돌아가라
+      console.log("쿼리 리다이렉트!");
+       next({
+         path: '/',
+         query: {redirect : to.fullPath}
+       })
     }
+  }
+  else {
+    next();
   }
   // next();
 });

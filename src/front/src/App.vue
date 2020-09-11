@@ -20,12 +20,11 @@ export default {
       try{
         this.loading = true;
         const initkey = await KakaoApi.kakaoInit();
-        window.Kakao.init(initkey);
-
-        if(window.Kakao.isInitialized())
-        {
-          console.log("로그인합니다.");
-          if(this.$store.state.accessToken == null ) {
+        if(!window.Kakao.isInitialized()){
+          window.Kakao.init(initkey);
+        }
+        else {
+          if(this.$route.query.recheck) {
             window.Kakao.Auth.login({
               success: (dat) => {
                 this.$store.dispatch('saveToken', dat);
@@ -37,7 +36,7 @@ export default {
             });
           }
           else {
-            console.log("이동합니다.");
+            window.Kakao.Auth.setAccessToken(this.$store.state.accessToken);
             this.$router.push("/main");
           }
         }

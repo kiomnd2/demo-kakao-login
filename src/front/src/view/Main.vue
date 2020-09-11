@@ -41,9 +41,9 @@
           this.renderUserInfo(data)
         },
         fail: (e) => {
-          console.log(e);
-          console.log("정보 가져오기 실패");
-          this.$router.push("/");
+          if(e.code === -401) {
+            this.$router.push({ path: '/', query : { recheck: true } });
+          }
         }
       });
     }
