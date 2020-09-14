@@ -31,19 +31,19 @@
         const kakaoAccount = data.kakao_account;
         this.kakaoInfo = kakaoAccount.profile;
 
-
       },
     },
     created() {
       window.Kakao.API.request({
         url: '/v2/user/me',
         success: (data) => {
+          console.log('사용자 정보를 표시합니다');
           this.renderUserInfo(data)
         },
         fail: (e) => {
-          if(e.code === -401) {
-            this.$router.push({ path: '/', query : { recheck: true } });
-          }
+          console.log(e);
+          console.error("사용자 정보를 표시하는데 실패했습니다.");
+
         }
       });
     }

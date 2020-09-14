@@ -1,14 +1,14 @@
 import Main from "../view/Main";
-import App from "../App";
+import Login from "../view/Login";
 
 
 export default [
   {
-    path: '/',
-    component: App,
+    path: '/login',
+    component: Login,
   },
   {
     path: '/main',
     component: Main,
-  }
+  },
 ]
