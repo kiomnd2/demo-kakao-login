@@ -22,6 +22,10 @@ const checkInitialized = async () => {
 };
 
 const initializeApp = () => {
+  if (store.state.accessToken) {
+    router.push("/main");
+  }
+
   new Vue({
     router,
     store,
