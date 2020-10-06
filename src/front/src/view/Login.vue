@@ -8,7 +8,6 @@
   export default {
     name: "Login",
     async created() {
-
         window.Kakao.Auth.login({
           success: (dat) => {
             this.$store.dispatch('saveToken', dat);

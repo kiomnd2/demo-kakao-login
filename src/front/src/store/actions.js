@@ -10,3 +10,11 @@ export const saveToken = ({commit}, info) => {
 
   commit(types.SAVE_TOKEN, info);
 };
+
+
+export const login = ({commit}, info) => {
+  console.log("login !");
+  localStorage.setItem("jwtToken", info.token);
+
+  commit(types.SAVE_JWT_TOKEN, info);
+};
