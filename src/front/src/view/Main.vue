@@ -42,7 +42,7 @@
           console.log('사용자 정보를 표시합니다');
 
           KakaoAPI.Login(data).then(({data}) => {
-            
+            console.log(data);
           });
 
           this.renderUserInfo(data)
